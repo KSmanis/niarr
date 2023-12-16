@@ -1,0 +1,35 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "KSmanis/renovate-config"
+  ],
+  "packageRules": [
+    {
+      "automerge": true,
+      "automergeType": "branch",
+      "matchManagers": [
+        "poetry"
+      ]
+    },
+    {
+      "matchPackagePatterns": [
+        "*"
+      ],
+      "semanticCommitType": "chore"
+    },
+    {
+      "automerge": false,
+      "matchDepTypes": [
+        "dependencies"
+      ],
+      "matchManagers": [
+        "poetry"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "semanticCommitType": "fix"
+    }
+  ],
+  "semanticCommits": "enabled"
+}
