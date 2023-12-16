@@ -110,3 +110,8 @@ jobs:
         run: poetry install --no-interaction --only-root -v
       - name: Run pytest
         run: poetry run pytest --color=yes --cov-config=pyproject.toml
+      - name: Run SonarCloud scanner
+        uses: SonarSource/sonarcloud-github-action@c25d2e7e3def96d0d1781000d3c429da22cd6252 # v2.0.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
