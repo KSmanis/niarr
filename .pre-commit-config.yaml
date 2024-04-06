@@ -10,7 +10,7 @@ repos:
       - id: check-useless-excludes
   # Generic
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: v4.6.0
     hooks:
       - id: check-shebang-scripts-are-executable
       - id: end-of-file-fixer
@@ -28,7 +28,7 @@ repos:
       - id: actionlint-docker
   # JSON
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: v4.6.0
     hooks:
       - id: check-json
       - id: pretty-format-json
@@ -69,7 +69,7 @@ repos:
         types: ["python"]
   # TOML
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: v4.6.0
     hooks:
       - id: check-toml
   - repo: https://github.com/pappasam/toml-sort
