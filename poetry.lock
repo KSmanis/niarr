@@ -270,13 +270,13 @@ testing = ["pytest", "pytest-benchmark"]
 
 [[package]]
 name = "portage"
-version = "3.0.63"
+version = "3.0.64"
 description = "Portage is the package management and distribution system for Gentoo"
 optional = false
 python-versions = ">=3.9"
 files = [
-    {file = "portage-3.0.63-py3-none-any.whl", hash = "sha256:ab42e525892fb83f8da38ec4c603122e870be21022d4a447b343f332f6e128c2"},
-    {file = "portage-3.0.63.tar.gz", hash = "sha256:0e72a6c2c0d23954bad5e1e3ae2e0c93aed5f10b1ea01501c8dd51a84c80c489"},
+    {file = "portage-3.0.64-py3-none-any.whl", hash = "sha256:9e2f39684972c8ce14200228b1e4225ad84b7f97f961cc950fadf52a1122def4"},
+    {file = "portage-3.0.64.tar.gz", hash = "sha256:6bae36e29addf652ffbd368322f0306d7a7237f2ceb0224312390e70ebd8b8a1"},
 ]
 
 [[package]]
