@@ -39,12 +39,12 @@ repository = "https://github.com/KSmanis/niarr"
 version = "0.1.0"
 
 [tool.poetry.dependencies]
-portage = "^3.0.58"
+portage = "^3.0.66.1"
 python = "^3.9"
 
 [tool.poetry.group.lint.dependencies]
-mypy = "^1.7.1"
-pre-commit = "^4.0.0"
+mypy = "^1.12.1"
+pre-commit = "^4.0.1"
 
 [tool.poetry.group.test.dependencies]
 pytest-cov = "^5.0.0"
