@@ -47,7 +47,7 @@ mypy = "^1.12.1"
 pre-commit = "^4.0.1"
 
 [tool.poetry.group.test.dependencies]
-pytest-cov = "^5.0.0"
+pytest-cov = "^6.0.0"
 
 [tool.poetry.scripts]
 niarr = "niarr.main:cli"
