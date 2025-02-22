@@ -8,7 +8,7 @@
       "automerge": true,
       "automergeType": "branch",
       "matchManagers": [
-        "poetry"
+        "pep621"
       ]
     },
     {
@@ -20,10 +20,11 @@
     {
       "automerge": false,
       "matchDepTypes": [
-        "dependencies"
+        "project.dependencies",
+        "project.optional-dependencies"
       ],
       "matchManagers": [
-        "poetry"
+        "pep621"
       ],
       "matchUpdateTypes": [
         "major"
