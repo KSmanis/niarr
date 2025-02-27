@@ -21,7 +21,7 @@ jobs:
         run: uv --color=always sync --frozen
       - name: Cache pre-commit hooks
         id: cache-pre-commit
-        uses: actions/cache@0c907a75c2c80ebcb7f088228285e798b750cf8f # v4
+        uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf # v4
         with:
           path: ~/.cache/pre-commit
           key: pre-commit-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('.pre-commit-config.yaml') }}
@@ -33,7 +33,7 @@ jobs:
         run: uv --color=always run pre-commit gc
       - name: Cache mypy
         id: cache-mypy
-        uses: actions/cache@0c907a75c2c80ebcb7f088228285e798b750cf8f # v4
+        uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf # v4
         with:
           path: .mypy_cache
           key: mypy-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('uv.lock') }}-${{ github.sha }}
