@@ -107,4 +107,4 @@ default-groups = [
   "lint",
   "test",
 ]
-required-version = "==0.9.26"
+required-version = "==0.9.27"
