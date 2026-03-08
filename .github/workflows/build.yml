@@ -1,36 +1,42 @@
 ---
 name: build
 
+env:
+  FORCE_COLOR: 1
+  UV_FROZEN: 1
+  UV_NO_SYNC: 1
+  UV_PYTHON_PREFERENCE: only-managed
+
 on: [push, pull_request]
 
 jobs:
-  pre-commit:
+  prek:
+    env:
+      PREK_COLOR: always
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
-          fetch-depth: 2
+          fetch-depth: 0
       - name: Identify Python version
         run: echo "PYTHON_VERSION=$(python -V | cut -d' ' -f2)" >> "$GITHUB_ENV"
       - name: Set up uv
         uses: astral-sh/setup-uv@5a095e7a2014a4212f075830d4f7277575a9d098 # v7.3.1
-        with:
-          enable-cache: true
       - name: Install dependencies
-        run: uv --color=always sync --frozen
-      - name: Cache pre-commit hooks
-        id: cache-pre-commit
+        run: uv sync
+      - name: Cache prek hooks
+        id: cache-prek
         uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # v5
         with:
-          path: ~/.cache/pre-commit
-          key: pre-commit-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('.pre-commit-config.yaml') }}
+          path: ~/.cache/prek
+          key: prek-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('.pre-commit-config.yaml') }}
           restore-keys: |
-            pre-commit-${{ runner.os }}-${{ env.PYTHON_VERSION }}-
-            pre-commit-${{ runner.os }}-
-      - name: Prune pre-commit hooks
-        if: steps.cache-pre-commit.outputs.cache-hit != 'true'
-        run: uv --color=always run pre-commit gc
+            prek-${{ runner.os }}-${{ env.PYTHON_VERSION }}-
+            prek-${{ runner.os }}-
+      - name: Prune prek hooks
+        if: steps.cache-prek.outputs.cache-hit != 'true'
+        run: uv run prek gc
       - name: Cache mypy
         id: cache-mypy
         uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # v5
@@ -39,9 +45,9 @@ jobs:
           key: mypy-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('uv.lock') }}-${{ github.sha }}
           restore-keys: mypy-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('uv.lock') }}-
       - name: Run gitlint
-        run: uv run pre-commit run --color=always --hook-stage manual gitlint-ci
-      - name: Run pre-commit
-        run: uv run pre-commit run --all-files --color=always --show-diff-on-failure
+        run: uv run prek run --hook-stage manual gitlint-ci
+      - name: Run prek
+        run: uv run prek run --all-files --show-diff-on-failure
 
   pytest:
     strategy:
@@ -58,10 +64,8 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Set up uv
         uses: astral-sh/setup-uv@5a095e7a2014a4212f075830d4f7277575a9d098 # v7.3.1
-        with:
-          enable-cache: true
       - name: Install dependencies
-        run: uv --color=always sync --frozen
+        run: uv sync
       - name: Run pytest
         run: uv run pytest --color=yes --cov-config=pyproject.toml
       - name: Upload coverage report
