@@ -7,9 +7,6 @@ lint = [
   "deptry>=0.25.1",
   "prek>=0.4.14",
 ]
-release = [
-  "python-semantic-release>=10.6.1",
-]
 test = [
   "pytest-cov>=7.1.0",
   "pytest-randomly>=4.1.0",
