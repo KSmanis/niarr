@@ -1,0 +1,9 @@
+[pytest]
+addopts = [
+  "--cov-report=term",
+  "--cov-report=xml",
+  "--cov=src",
+  "--import-mode=importlib",
+]
+strict = true
+testpaths = ["tests"]
