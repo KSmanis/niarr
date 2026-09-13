@@ -17,7 +17,7 @@ type = [
 ]
 
 [project]
-authors = [{email = "konstantinos.smanis@gmail.com", name = "Konstantinos Smanis"}]
+authors = [{ email = "konstantinos.smanis@gmail.com", name = "Konstantinos Smanis" }]
 classifiers = [
   "Development Status :: 2 - Pre-Alpha",
   "Environment :: Console",
